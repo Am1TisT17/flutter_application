@@ -30,17 +30,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  int _buttonPressCount = 0;
-  String _displayText = '';
-  Color _backgroundColor = Colors.white;
+  int counter = 0;
+  int buttonPressCount = 0;
+  String displayText = '';
+  Color backgroundColor = Colors.white;
 
   final TextEditingController _textController = TextEditingController();
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
-      _buttonPressCount++;
+      counter++;
+      buttonPressCount++;
     });
   }
 
@@ -58,8 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
             TextButton(
               onPressed: () {
                 setState(() {
-                  _displayText = _textController.text;
-                  _buttonPressCount++;
+                  displayText = _textController.text;
+                  buttonPressCount++;
                 });
                 Navigator.of(context).pop();
               },
@@ -73,22 +73,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _removeText() {
     setState(() {
-      _displayText = '';
-      _buttonPressCount++;
+      displayText = '';
+      buttonPressCount++;
     });
   }
 
   void _changeBackgroundColor() {
     setState(() {
-      _backgroundColor = Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
-      _buttonPressCount++;
+      backgroundColor = Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+      buttonPressCount++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _backgroundColor,
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
@@ -99,12 +99,12 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const Text('You have pushed the button this many times:'),
             Text(
-              '$_counter',
+              '$counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: 20),
             Text(
-              _displayText,
+              displayText,
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             const SizedBox(height: 20),
@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 20),
             Text(
-              'Total button presses: $_buttonPressCount',
+              'Total button presses: $buttonPressCount',
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ],
